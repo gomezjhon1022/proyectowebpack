@@ -59,7 +59,7 @@ module.exports = {
             test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
         generator: {
-          filename: "assets/fonts/[hash][ext]",
+        filename: "assets/fonts/[hash][ext]",
         },
         }
         ]
@@ -83,4 +83,22 @@ module.exports = {
         }),
         new Dotenv(),
     ],
+    // devServer: {
+    //     contentBase: path.join(__dirname, 'dist'),
+    //     compress: true,
+    //     historyApiFallback: true,
+    //     port: 3006,
+    // },
+    devServer: {
+        static:
+        {
+        directory: path.join(__dirname, "dist"),
+        watch: true,
+        },
+        watchFiles: path.join(__dirname, "./**"), //observa los cambios en todos nuestros archivos y actualiza el navegador
+        compress: true,
+        historyApiFallback: true,
+        port: 3006,
+        open: true, //Hace que se abra en el navegador
+    },
 }
